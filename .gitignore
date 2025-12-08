@@ -31,6 +31,7 @@ test_output.txt
 .idea/
 *.iml
 .claude
+SETUP_GITHUB_CLASSROOM.md
 
 # Ne PAS ignorer les fichiers log de test (nécessaires pour les tests)
 # test_logs/*.log doit rester dans le repo

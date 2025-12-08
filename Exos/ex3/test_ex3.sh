@@ -38,3 +38,10 @@ echo "$OUTPUT" | grep -qE "25|taux.*25" && { echo -e "${GREEN}✓ Taux d'erreurs
 echo "$OUTPUT" | grep -q "config.json" && { echo -e "${GREEN}✓ Dernière erreur affichée${NC}"; SCORE=$(echo "$SCORE + 1.5" | bc); } || echo -e "${RED}✗ Dernière erreur non affichée${NC}"
 
 echo ""; echo "Score : $SCORE / $MAX"
+
+# Retourner un code d'erreur si le score n'est pas parfait (pour GitHub Classroom)
+if (( $(echo "$SCORE < $MAX" | bc -l) )); then
+    exit 1
+else
+    exit 0
+fi

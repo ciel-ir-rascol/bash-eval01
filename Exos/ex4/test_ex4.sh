@@ -38,3 +38,10 @@ grep -qiE "while.*true|while.*1|done" "$SCRIPT" && { echo -e "${GREEN}✓ Boucle
 echo ""
 echo "⚠️  Note: Tests basiques (analyse de code). Test manuel recommandé."
 echo "Score : $SCORE / $MAX"
+
+# Retourner un code d'erreur si le score n'est pas parfait (pour GitHub Classroom)
+if (( $(echo "$SCORE < $MAX" | bc -l) )); then
+    exit 1
+else
+    exit 0
+fi

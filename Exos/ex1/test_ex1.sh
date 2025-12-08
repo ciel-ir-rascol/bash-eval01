@@ -37,3 +37,10 @@ $SCRIPT 10 / 0 2>&1 | grep -iq "zéro\|zero\|impossible" && { echo -e "${GREEN}�
 $SCRIPT 10 % 3 > /dev/null 2>&1 && echo -e "${RED}✗ Opérateur invalide non détecté${NC}" || { echo -e "${GREEN}✓ Opérateur invalide détecté${NC}"; SCORE=$(echo "$SCORE + 1" | bc); }
 
 echo ""; echo "Score : $SCORE / $MAX"
+
+# Retourner un code d'erreur si le score n'est pas parfait (pour GitHub Classroom)
+if (( $(echo "$SCORE < $MAX" | bc -l) )); then
+    exit 1
+else
+    exit 0
+fi

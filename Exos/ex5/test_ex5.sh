@@ -40,3 +40,10 @@ echo "$OUTPUT" | grep -iE "\.sh.*2" && { echo -e "${GREEN}✓ Comptage .sh corre
 rm -rf "$TEST_DIR"
 
 echo ""; echo "Score BONUS : $SCORE / $MAX"
+
+# Retourner un code d'erreur si le score n'est pas parfait (pour GitHub Classroom)
+if (( $(echo "$SCORE < $MAX" | bc -l) )); then
+    exit 1
+else
+    exit 0
+fi

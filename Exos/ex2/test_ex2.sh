@@ -36,3 +36,10 @@ echo "$OUTPUT" | grep -qiE "spéciau|special" && { echo -e "${GREEN}✓ Caractè
 echo "$OUTPUT" | grep -qiE "score|niveau|level" && { echo -e "${GREEN}✓ Score/Niveau affiché${NC}"; SCORE=$(echo "$SCORE + 1" | bc); } || echo -e "${RED}✗ Score/Niveau non affiché${NC}"
 
 echo ""; echo "Score : $SCORE / $MAX"
+
+# Retourner un code d'erreur si le score n'est pas parfait (pour GitHub Classroom)
+if (( $(echo "$SCORE < $MAX" | bc -l) )); then
+    exit 1
+else
+    exit 0
+fi

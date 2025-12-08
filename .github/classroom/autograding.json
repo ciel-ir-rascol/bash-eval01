@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "Ex1 - Calculatrice simple",
+      "setup": "cd Exos/ex1 && chmod +x calculatrice.sh test_ex1.sh",
+      "run": "cd Exos/ex1 && ./test_ex1.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Ex2 - Vérificateur mot de passe",
+      "setup": "cd Exos/ex2 && chmod +x verif_password.sh test_ex2.sh",
+      "run": "cd Exos/ex2 && ./test_ex2.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Ex3 - Analyseur de logs",
+      "setup": "cd Exos/ex3 && chmod +x analyser_logs.sh test_ex3.sh",
+      "run": "cd Exos/ex3 && ./test_ex3.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 6
+    },
+    {
+      "name": "Ex4 - Menu interactif",
+      "setup": "cd Exos/ex4 && chmod +x menu_calculs.sh test_ex4.sh",
+      "run": "cd Exos/ex4 && ./test_ex4.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 8
+    },
+    {
+      "name": "Ex5 - Compteur fichiers (BONUS)",
+      "setup": "cd Exos/ex5 && chmod +x compteur_fichiers.sh test_ex5.sh",
+      "run": "cd Exos/ex5 && ./test_ex5.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Qualité du code",
+      "setup": "sudo apt-get update && sudo apt-get install -y bc",
+      "run": "quality_score=0; shebang_count=$(find Exos -name '*.sh' -not -path '*/test_*' -exec grep -l '^#!/bin/bash' {} \\; | wc -l); total_scripts=$(find Exos -name '*.sh' -not -path '*/test_*' | wc -l); [ \"$shebang_count\" -eq \"$total_scripts\" ] && [ \"$total_scripts\" -gt 0 ] && quality_score=$(echo \"$quality_score + 0.5\" | bc); comment_count=$(find Exos -name '*.sh' -not -path '*/test_*' -exec grep -c '^#' {} \\; | awk '{s+=$1} END {print s}'); [ \"$comment_count\" -gt 15 ] && quality_score=$(echo \"$quality_score + 0.5\" | bc); exec_count=$(find Exos -name '*.sh' -not -path '*/test_*' -executable | wc -l); [ \"$exec_count\" -eq \"$total_scripts\" ] && [ \"$total_scripts\" -gt 0 ] && quality_score=$(echo \"$quality_score + 0.5\" | bc); error_handling=$(find Exos -name '*.sh' -not -path '*/test_*' -exec grep -l 'exit 1\\|return 1' {} \\; | wc -l); [ \"$error_handling\" -ge 2 ] && quality_score=$(echo \"$quality_score + 0.5\" | bc); echo \"Score qualité : $quality_score / 2\"",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    }
+  ]
+}

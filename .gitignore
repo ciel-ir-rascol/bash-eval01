@@ -1,11 +1,10 @@
 # Fichiers temporaires
-# *.log
 *.tmp
 *~
+test_output.txt
 
 # Dossiers de test
 /tmp/
-test_logs/*.txt
 
 # Fichiers de sauvegarde
 *.bak
@@ -19,13 +18,19 @@ test_logs/*.txt
 # Logs système
 /var/log/
 
-# Garder le dossier test_logs mais ignorer son contenu (sauf README)
-test_logs/*
-!test_logs/README.md
+# GitHub Actions results
+.github/results/
 
 # macOS
 .DS_Store
 
 # VSCode
 .vscode/
-.claude
+
+# IDE
+.idea/
+*.iml
+
+# Ne PAS ignorer les fichiers log de test (nécessaires pour les tests)
+# test_logs/*.log doit rester dans le repo
+!Exos/ex3/test_logs/app.log

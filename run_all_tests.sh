@@ -205,18 +205,23 @@ echo ""
 # Les tests automatiques donnent le score sur 36 pts
 # Le bonus peut ajouter jusqu'à 5 pts supplémentaires
 
+# Calculer la note sur 20
+NOTE_SUR_20=$(echo "scale=2; $TOTAL_SCORE * 20 / 36" | bc)
+# Si la note a un bonus, la plafonner à 20
+if (( $(echo "$NOTE_SUR_20 > 20" | bc -l) )); then
+    NOTE_SUR_20="20.00"
+fi
+
 echo "┌────────────────────────────────────────────────────────────┐"
-echo "│ Exercice 1 : ${SCORE_EX1:-0} / 7 pts   (7 tests × 1pt)                │"
-echo "│ Exercice 2 : ${SCORE_EX2:-0} / 8 pts   (8 tests × 1pt)                │"
-echo "│ Exercice 3 : ${SCORE_EX3:-0} / 9 pts   (7 tests × 1pt + 1 test × 2pts)│"
-echo "│ Exercice 4 : ${SCORE_EX4:-0} / 12 pts  (4 tests × 3pts)               │"
-echo "│ Exercice 5 : ${SCORE_EX5:-0} / 5 pts   (5 tests × 1pt - BONUS)        │"
+printf "│ %-58s │\n" "Exercice 1 : ${SCORE_EX1:-0} / 7 pts   (7 tests × 1pt)"
+printf "│ %-58s │\n" "Exercice 2 : ${SCORE_EX2:-0} / 8 pts   (8 tests × 1pt)"
+printf "│ %-58s │\n" "Exercice 3 : ${SCORE_EX3:-0} / 9 pts   (7×1pt + 1×2pts)"
+printf "│ %-58s │\n" "Exercice 4 : ${SCORE_EX4:-0} / 12 pts  (4 tests × 3pts)"
+printf "│ %-58s │\n" "Exercice 5 : ${SCORE_EX5:-0} / 5 pts   (BONUS)"
 echo "├────────────────────────────────────────────────────────────┤"
-printf "│ %-56s │\n" "SCORE TESTS AUTO : $TOTAL_SCORE / 36 pts"
-echo "│                                                            │"
-echo "│ ⚠️  Barème complet = 36 pts obligatoires + 5 pts bonus     │"
-echo "│ Note finale = (Score / 36) × 20                           │"
-echo "│ Note avec bonus = min(20, (Score / 36) × 20)             │"
+printf "│ %-58s │\n" "SCORE TOTAL : $TOTAL_SCORE / 36 pts"
+printf "│ %-58s │\n" ""
+printf "│ %-58s │\n" "NOTE FINALE : $NOTE_SUR_20 / 20"
 echo "└────────────────────────────────────────────────────────────┘"
 echo ""
 

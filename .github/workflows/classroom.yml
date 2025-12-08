@@ -13,58 +13,296 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Ex1 - Calculatrice simple
-      id: ex1---calculatrice-simple
+    - name: Ex1.1 - Vérification paramètres
+      id: ex1-1-verification-parametres
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Ex1 - Calculatrice simple
-        setup-command: sudo apt-get update && sudo apt-get install -y bc
-        command: cd Exos/ex1 && chmod +x test_ex1.sh && ./test_ex1.sh
+        test-name: Ex1.1 - Vérification paramètres
+        command: cd Exos/ex1 && chmod +x test_ex1.sh && ./test_ex1.sh 1
         timeout: 2
-        max-score: 5
-    - name: Ex2 - Vérificateur mot de passe
-      id: ex2---verificateur-mot-de-passe
+        max-score: 1
+    - name: Ex1.2 - Addition
+      id: ex1-2-addition
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Ex2 - Vérificateur mot de passe
-        setup-command: sudo apt-get update && sudo apt-get install -y bc
-        command: cd Exos/ex2 && chmod +x test_ex2.sh && ./test_ex2.sh
+        test-name: Ex1.2 - Addition
+        command: cd Exos/ex1 && ./test_ex1.sh 2
         timeout: 2
-        max-score: 5
-    - name: Ex3 - Analyseur de logs
-      id: ex3---analyseur-de-logs
+        max-score: 1
+    - name: Ex1.3 - Soustraction
+      id: ex1-3-soustraction
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Ex3 - Analyseur de logs
-        setup-command: sudo apt-get update && sudo apt-get install -y bc
-        command: cd Exos/ex3 && chmod +x test_ex3.sh && ./test_ex3.sh
+        test-name: Ex1.3 - Soustraction
+        command: cd Exos/ex1 && ./test_ex1.sh 3
         timeout: 2
-        max-score: 6
-    - name: Ex4 - Menu interactif
-      id: ex4---menu-interactif
+        max-score: 1
+    - name: Ex1.4 - Multiplication
+      id: ex1-4-multiplication
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Ex4 - Menu interactif
-        setup-command: sudo apt-get update && sudo apt-get install -y bc
-        command: cd Exos/ex4 && chmod +x test_ex4.sh && ./test_ex4.sh
+        test-name: Ex1.4 - Multiplication
+        command: cd Exos/ex1 && ./test_ex1.sh 4
         timeout: 2
-        max-score: 8
-    - name: Ex5 - Compteur fichiers (BONUS)
-      id: ex5---compteur-fichiers-bonus
+        max-score: 1
+    - name: Ex1.5 - Division
+      id: ex1-5-division
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Ex5 - Compteur fichiers (BONUS)
-        setup-command: sudo apt-get update && sudo apt-get install -y bc
-        command: cd Exos/ex5 && chmod +x test_ex5.sh && ./test_ex5.sh
+        test-name: Ex1.5 - Division
+        command: cd Exos/ex1 && ./test_ex1.sh 5
         timeout: 2
-        max-score: 4
+        max-score: 1
+    - name: Ex1.6 - Division par zéro
+      id: ex1-6-division-par-zero
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex1.6 - Division par zéro
+        command: cd Exos/ex1 && ./test_ex1.sh 6
+        timeout: 2
+        max-score: 1
+    - name: Ex1.7 - Opérateur invalide
+      id: ex1-7-operateur-invalide
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex1.7 - Opérateur invalide
+        command: cd Exos/ex1 && ./test_ex1.sh 7
+        timeout: 2
+        max-score: 1
+    - name: Ex2.1 - Vérification paramètre
+      id: ex2-1-verification-parametre
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.1 - Vérification paramètre
+        command: cd Exos/ex2 && chmod +x test_ex2.sh && ./test_ex2.sh 1
+        timeout: 2
+        max-score: 1
+    - name: Ex2.2 - Mot de passe faible
+      id: ex2-2-mot-de-passe-faible
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.2 - Mot de passe faible
+        command: cd Exos/ex2 && ./test_ex2.sh 2
+        timeout: 2
+        max-score: 1
+    - name: Ex2.3 - Détection longueur
+      id: ex2-3-detection-longueur
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.3 - Détection longueur
+        command: cd Exos/ex2 && ./test_ex2.sh 3
+        timeout: 2
+        max-score: 1
+    - name: Ex2.4 - Détection majuscules
+      id: ex2-4-detection-majuscules
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.4 - Détection majuscules
+        command: cd Exos/ex2 && ./test_ex2.sh 4
+        timeout: 2
+        max-score: 1
+    - name: Ex2.5 - Détection minuscules
+      id: ex2-5-detection-minuscules
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.5 - Détection minuscules
+        command: cd Exos/ex2 && ./test_ex2.sh 5
+        timeout: 2
+        max-score: 1
+    - name: Ex2.6 - Détection chiffres
+      id: ex2-6-detection-chiffres
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.6 - Détection chiffres
+        command: cd Exos/ex2 && ./test_ex2.sh 6
+        timeout: 2
+        max-score: 1
+    - name: Ex2.7 - Détection caractères spéciaux
+      id: ex2-7-detection-caracteres-speciaux
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.7 - Détection caractères spéciaux
+        command: cd Exos/ex2 && ./test_ex2.sh 7
+        timeout: 2
+        max-score: 1
+    - name: Ex2.8 - Score/Niveau affiché
+      id: ex2-8-score-niveau-affiche
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex2.8 - Score/Niveau affiché
+        command: cd Exos/ex2 && ./test_ex2.sh 8
+        timeout: 2
+        max-score: 1
+    - name: Ex3.1 - Vérification paramètre
+      id: ex3-1-verification-parametre
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.1 - Vérification paramètre
+        command: cd Exos/ex3 && chmod +x test_ex3.sh && ./test_ex3.sh 1
+        timeout: 2
+        max-score: 1
+    - name: Ex3.2 - Vérification fichier inexistant
+      id: ex3-2-verification-fichier-inexistant
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.2 - Vérification fichier inexistant
+        command: cd Exos/ex3 && ./test_ex3.sh 2
+        timeout: 2
+        max-score: 1
+    - name: Ex3.3 - Total lignes
+      id: ex3-3-total-lignes
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.3 - Total lignes
+        command: cd Exos/ex3 && ./test_ex3.sh 3
+        timeout: 2
+        max-score: 1
+    - name: Ex3.4 - Comptage INFO
+      id: ex3-4-comptage-info
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.4 - Comptage INFO
+        command: cd Exos/ex3 && ./test_ex3.sh 4
+        timeout: 2
+        max-score: 1
+    - name: Ex3.5 - Comptage WARNING
+      id: ex3-5-comptage-warning
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.5 - Comptage WARNING
+        command: cd Exos/ex3 && ./test_ex3.sh 5
+        timeout: 2
+        max-score: 1
+    - name: Ex3.6 - Comptage ERROR
+      id: ex3-6-comptage-error
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.6 - Comptage ERROR
+        command: cd Exos/ex3 && ./test_ex3.sh 6
+        timeout: 2
+        max-score: 1
+    - name: Ex3.7 - Taux d'erreurs
+      id: ex3-7-taux-erreurs
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.7 - Taux d'erreurs
+        command: cd Exos/ex3 && ./test_ex3.sh 7
+        timeout: 2
+        max-score: 2
+    - name: Ex3.8 - Dernière erreur
+      id: ex3-8-derniere-erreur
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex3.8 - Dernière erreur
+        command: cd Exos/ex3 && ./test_ex3.sh 8
+        timeout: 2
+        max-score: 1
+    - name: Ex4.1 - Somme
+      id: ex4-1-somme
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex4.1 - Somme
+        command: cd Exos/ex4 && chmod +x test_ex4.sh && ./test_ex4.sh 1
+        timeout: 10
+        max-score: 3
+    - name: Ex4.2 - Moyenne
+      id: ex4-2-moyenne
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex4.2 - Moyenne
+        command: cd Exos/ex4 && ./test_ex4.sh 2
+        timeout: 10
+        max-score: 3
+    - name: Ex4.3 - Minimum
+      id: ex4-3-minimum
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex4.3 - Minimum
+        command: cd Exos/ex4 && ./test_ex4.sh 3
+        timeout: 10
+        max-score: 3
+    - name: Ex4.4 - Maximum
+      id: ex4-4-maximum
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex4.4 - Maximum
+        command: cd Exos/ex4 && ./test_ex4.sh 4
+        timeout: 10
+        max-score: 3
+    - name: Ex5.1 - Vérification paramètre (BONUS)
+      id: ex5-1-verification-parametre-bonus
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex5.1 - Vérification paramètre (BONUS)
+        command: cd Exos/ex5 && chmod +x test_ex5.sh && ./test_ex5.sh 1
+        timeout: 2
+        max-score: 1
+    - name: Ex5.2 - Utilisation find (BONUS)
+      id: ex5-2-utilisation-find-bonus
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex5.2 - Utilisation find (BONUS)
+        command: cd Exos/ex5 && ./test_ex5.sh 2
+        timeout: 2
+        max-score: 1
+    - name: Ex5.3 - Extraction extension (BONUS)
+      id: ex5-3-extraction-extension-bonus
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex5.3 - Extraction extension (BONUS)
+        command: cd Exos/ex5 && ./test_ex5.sh 3
+        timeout: 2
+        max-score: 1
+    - name: Ex5.4 - Comptage .txt (BONUS)
+      id: ex5-4-comptage-txt-bonus
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex5.4 - Comptage .txt (BONUS)
+        command: cd Exos/ex5 && ./test_ex5.sh 4
+        timeout: 2
+        max-score: 1
+    - name: Ex5.5 - Comptage .sh (BONUS)
+      id: ex5-5-comptage-sh-bonus
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ex5.5 - Comptage .sh (BONUS)
+        command: cd Exos/ex5 && ./test_ex5.sh 5
+        timeout: 2
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        EX1---CALCULATRICE-SIMPLE_RESULTS: "${{steps.ex1---calculatrice-simple.outputs.result}}"
-        EX2---VERIFICATEUR-MOT-DE-PASSE_RESULTS: "${{steps.ex2---verificateur-mot-de-passe.outputs.result}}"
-        EX3---ANALYSEUR-DE-LOGS_RESULTS: "${{steps.ex3---analyseur-de-logs.outputs.result}}"
-        EX4---MENU-INTERACTIF_RESULTS: "${{steps.ex4---menu-interactif.outputs.result}}"
-        EX5---COMPTEUR-FICHIERS-BONUS_RESULTS: "${{steps.ex5---compteur-fichiers-bonus.outputs.result}}"
+        EX1-1-VERIFICATION-PARAMETRES_RESULTS: "${{steps.ex1-1-verification-parametres.outputs.result}}"
+        EX1-2-ADDITION_RESULTS: "${{steps.ex1-2-addition.outputs.result}}"
+        EX1-3-SOUSTRACTION_RESULTS: "${{steps.ex1-3-soustraction.outputs.result}}"
+        EX1-4-MULTIPLICATION_RESULTS: "${{steps.ex1-4-multiplication.outputs.result}}"
+        EX1-5-DIVISION_RESULTS: "${{steps.ex1-5-division.outputs.result}}"
+        EX1-6-DIVISION-PAR-ZERO_RESULTS: "${{steps.ex1-6-division-par-zero.outputs.result}}"
+        EX1-7-OPERATEUR-INVALIDE_RESULTS: "${{steps.ex1-7-operateur-invalide.outputs.result}}"
+        EX2-1-VERIFICATION-PARAMETRE_RESULTS: "${{steps.ex2-1-verification-parametre.outputs.result}}"
+        EX2-2-MOT-DE-PASSE-FAIBLE_RESULTS: "${{steps.ex2-2-mot-de-passe-faible.outputs.result}}"
+        EX2-3-DETECTION-LONGUEUR_RESULTS: "${{steps.ex2-3-detection-longueur.outputs.result}}"
+        EX2-4-DETECTION-MAJUSCULES_RESULTS: "${{steps.ex2-4-detection-majuscules.outputs.result}}"
+        EX2-5-DETECTION-MINUSCULES_RESULTS: "${{steps.ex2-5-detection-minuscules.outputs.result}}"
+        EX2-6-DETECTION-CHIFFRES_RESULTS: "${{steps.ex2-6-detection-chiffres.outputs.result}}"
+        EX2-7-DETECTION-CARACTERES-SPECIAUX_RESULTS: "${{steps.ex2-7-detection-caracteres-speciaux.outputs.result}}"
+        EX2-8-SCORE-NIVEAU-AFFICHE_RESULTS: "${{steps.ex2-8-score-niveau-affiche.outputs.result}}"
+        EX3-1-VERIFICATION-PARAMETRE_RESULTS: "${{steps.ex3-1-verification-parametre.outputs.result}}"
+        EX3-2-VERIFICATION-FICHIER-INEXISTANT_RESULTS: "${{steps.ex3-2-verification-fichier-inexistant.outputs.result}}"
+        EX3-3-TOTAL-LIGNES_RESULTS: "${{steps.ex3-3-total-lignes.outputs.result}}"
+        EX3-4-COMPTAGE-INFO_RESULTS: "${{steps.ex3-4-comptage-info.outputs.result}}"
+        EX3-5-COMPTAGE-WARNING_RESULTS: "${{steps.ex3-5-comptage-warning.outputs.result}}"
+        EX3-6-COMPTAGE-ERROR_RESULTS: "${{steps.ex3-6-comptage-error.outputs.result}}"
+        EX3-7-TAUX-ERREURS_RESULTS: "${{steps.ex3-7-taux-erreurs.outputs.result}}"
+        EX3-8-DERNIERE-ERREUR_RESULTS: "${{steps.ex3-8-derniere-erreur.outputs.result}}"
+        EX4-1-SOMME_RESULTS: "${{steps.ex4-1-somme.outputs.result}}"
+        EX4-2-MOYENNE_RESULTS: "${{steps.ex4-2-moyenne.outputs.result}}"
+        EX4-3-MINIMUM_RESULTS: "${{steps.ex4-3-minimum.outputs.result}}"
+        EX4-4-MAXIMUM_RESULTS: "${{steps.ex4-4-maximum.outputs.result}}"
+        EX5-1-VERIFICATION-PARAMETRE-BONUS_RESULTS: "${{steps.ex5-1-verification-parametre-bonus.outputs.result}}"
+        EX5-2-UTILISATION-FIND-BONUS_RESULTS: "${{steps.ex5-2-utilisation-find-bonus.outputs.result}}"
+        EX5-3-EXTRACTION-EXTENSION-BONUS_RESULTS: "${{steps.ex5-3-extraction-extension-bonus.outputs.result}}"
+        EX5-4-COMPTAGE-TXT-BONUS_RESULTS: "${{steps.ex5-4-comptage-txt-bonus.outputs.result}}"
+        EX5-5-COMPTAGE-SH-BONUS_RESULTS: "${{steps.ex5-5-comptage-sh-bonus.outputs.result}}"
       with:
-        runners: ex1---calculatrice-simple,ex2---verificateur-mot-de-passe,ex3---analyseur-de-logs,ex4---menu-interactif,ex5---compteur-fichiers-bonus
+        runners: ex1-1-verification-parametres,ex1-2-addition,ex1-3-soustraction,ex1-4-multiplication,ex1-5-division,ex1-6-division-par-zero,ex1-7-operateur-invalide,ex2-1-verification-parametre,ex2-2-mot-de-passe-faible,ex2-3-detection-longueur,ex2-4-detection-majuscules,ex2-5-detection-minuscules,ex2-6-detection-chiffres,ex2-7-detection-caracteres-speciaux,ex2-8-score-niveau-affiche,ex3-1-verification-parametre,ex3-2-verification-fichier-inexistant,ex3-3-total-lignes,ex3-4-comptage-info,ex3-5-comptage-warning,ex3-6-comptage-error,ex3-7-taux-erreurs,ex3-8-derniere-erreur,ex4-1-somme,ex4-2-moyenne,ex4-3-minimum,ex4-4-maximum,ex5-1-verification-parametre-bonus,ex5-2-utilisation-find-bonus,ex5-3-extraction-extension-bonus,ex5-4-comptage-txt-bonus,ex5-5-comptage-sh-bonus

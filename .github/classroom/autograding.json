@@ -1,3 +1,54 @@
 {
-  "tests": []
+  "tests": [
+    {
+      "name": "Ex1 - Calculatrice simple",
+      "setup": "sudo apt-get update && sudo apt-get install -y bc",
+      "run": "cd Exos/ex1 && chmod +x test_ex1.sh && ./test_ex1.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 5
+    },
+    {
+      "name": "Ex2 - Vérificateur mot de passe",
+      "setup": "sudo apt-get update && sudo apt-get install -y bc",
+      "run": "cd Exos/ex2 && chmod +x test_ex2.sh && ./test_ex2.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 5
+    },
+    {
+      "name": "Ex3 - Analyseur de logs",
+      "setup": "sudo apt-get update && sudo apt-get install -y bc",
+      "run": "cd Exos/ex3 && chmod +x test_ex3.sh && ./test_ex3.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 6
+    },
+    {
+      "name": "Ex4 - Menu interactif",
+      "setup": "sudo apt-get update && sudo apt-get install -y bc",
+      "run": "cd Exos/ex4 && chmod +x test_ex4.sh && ./test_ex4.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 8
+    },
+    {
+      "name": "Ex5 - Compteur fichiers (BONUS)",
+      "setup": "sudo apt-get update && sudo apt-get install -y bc",
+      "run": "cd Exos/ex5 && chmod +x test_ex5.sh && ./test_ex5.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 4
+    }
+  ]
 }

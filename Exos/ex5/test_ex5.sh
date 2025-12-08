@@ -4,6 +4,13 @@ SCRIPT="./compteur_fichiers.sh"
 TEST_DIR="/tmp/test_compteur_$$"
 SCORE=0; MAX=4
 
+# Vérifier la disponibilité de bc
+if ! command -v bc &> /dev/null; then
+    echo "ERREUR: La commande 'bc' n'est pas installée."
+    echo "Installation: sudo apt-get install -y bc"
+    exit 1
+fi
+
 echo "=========================================="
 echo "Test Ex5 BONUS : Compteur fichiers"
 echo "=========================================="

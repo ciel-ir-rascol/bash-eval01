@@ -4,6 +4,13 @@ SCRIPT="./analyser_logs.sh"
 LOGFILE="test_logs/app.log"
 SCORE=0; MAX=6
 
+# Vérifier la disponibilité de bc
+if ! command -v bc &> /dev/null; then
+    echo "ERREUR: La commande 'bc' n'est pas installée."
+    echo "Installation: sudo apt-get install -y bc"
+    exit 1
+fi
+
 echo "=========================================="
 echo "Test Ex3 : Analyseur de logs"
 echo "=========================================="

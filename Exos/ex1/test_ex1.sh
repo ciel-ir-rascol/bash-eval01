@@ -3,6 +3,13 @@ GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
 SCRIPT="./calculatrice.sh"
 SCORE=0; MAX=5
 
+# Vérifier la disponibilité de bc
+if ! command -v bc &> /dev/null; then
+    echo "ERREUR: La commande 'bc' n'est pas installée."
+    echo "Installation: sudo apt-get install -y bc"
+    exit 1
+fi
+
 echo "=========================================="
 echo "Test Ex1 : Calculatrice simple"
 echo "=========================================="

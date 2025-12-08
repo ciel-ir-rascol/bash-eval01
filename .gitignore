@@ -1,0 +1,31 @@
+# Fichiers temporaires
+# *.log
+*.tmp
+*~
+
+# Dossiers de test
+/tmp/
+test_logs/*.txt
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+*.swo
+
+# Archives
+*.tar.gz
+*.zip
+
+# Logs système
+/var/log/
+
+# Garder le dossier test_logs mais ignorer son contenu (sauf README)
+test_logs/*
+!test_logs/README.md
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+.claude

@@ -30,6 +30,7 @@ test_output.txt
 # IDE
 .idea/
 *.iml
+.claude
 
 # Ne PAS ignorer les fichiers log de test (nécessaires pour les tests)
 # test_logs/*.log doit rester dans le repo

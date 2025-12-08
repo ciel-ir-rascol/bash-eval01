@@ -15,42 +15,42 @@ run_test() {
     case $test_num in
         1)
             # Test 1: Vérification paramètre (1pt)
-            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1: Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1: Vérification paramètre OK${NC}"; return 0; }
+            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1 (1pt): Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1 (1pt): Vérification paramètre OK${NC}"; return 0; }
             ;;
         2)
             # Test 2: Mot de passe faible détecté (1pt)
             OUTPUT=$($SCRIPT "abc" 2>&1)
-            echo "$OUTPUT" | grep -qiE "faible|weak" && { echo -e "${GREEN}✓ Test 2: Mot de passe faible détecté${NC}"; return 0; } || { echo -e "${RED}✗ Test 2: Niveau faible non détecté${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "faible|weak" && { echo -e "${GREEN}✓ Test 2 (1pt): Mot de passe faible détecté${NC}"; return 0; } || { echo -e "${RED}✗ Test 2 (1pt): Niveau faible non détecté${NC}"; return 1; }
             ;;
         3)
             # Test 3: Détection longueur (1pt)
             OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-            echo "$OUTPUT" | grep -qiE "longueur|length" && { echo -e "${GREEN}✓ Test 3: Longueur vérifiée${NC}"; return 0; } || { echo -e "${RED}✗ Test 3: Longueur non vérifiée${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "longueur|length" && { echo -e "${GREEN}✓ Test 3 (1pt): Longueur vérifiée${NC}"; return 0; } || { echo -e "${RED}✗ Test 3 (1pt): Longueur non vérifiée${NC}"; return 1; }
             ;;
         4)
             # Test 4: Détection majuscules (1pt)
             OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-            echo "$OUTPUT" | grep -qiE "majuscule|uppercase" && { echo -e "${GREEN}✓ Test 4: Majuscules détectées${NC}"; return 0; } || { echo -e "${RED}✗ Test 4: Majuscules non détectées${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "majuscule|uppercase" && { echo -e "${GREEN}✓ Test 4 (1pt): Majuscules détectées${NC}"; return 0; } || { echo -e "${RED}✗ Test 4 (1pt): Majuscules non détectées${NC}"; return 1; }
             ;;
         5)
             # Test 5: Détection minuscules (1pt)
             OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-            echo "$OUTPUT" | grep -qiE "minuscule|lowercase" && { echo -e "${GREEN}✓ Test 5: Minuscules détectées${NC}"; return 0; } || { echo -e "${RED}✗ Test 5: Minuscules non détectées${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "minuscule|lowercase" && { echo -e "${GREEN}✓ Test 5 (1pt): Minuscules détectées${NC}"; return 0; } || { echo -e "${RED}✗ Test 5 (1pt): Minuscules non détectées${NC}"; return 1; }
             ;;
         6)
             # Test 6: Détection chiffres (1pt)
             OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-            echo "$OUTPUT" | grep -qiE "chiffre|digit|nombre" && { echo -e "${GREEN}✓ Test 6: Chiffres détectés${NC}"; return 0; } || { echo -e "${RED}✗ Test 6: Chiffres non détectés${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "chiffre|digit|nombre" && { echo -e "${GREEN}✓ Test 6 (1pt): Chiffres détectés${NC}"; return 0; } || { echo -e "${RED}✗ Test 6 (1pt): Chiffres non détectés${NC}"; return 1; }
             ;;
         7)
             # Test 7: Détection caractères spéciaux (1pt)
             OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-            echo "$OUTPUT" | grep -qiE "spéciau|special" && { echo -e "${GREEN}✓ Test 7: Caractères spéciaux détectés${NC}"; return 0; } || { echo -e "${RED}✗ Test 7: Caractères spéciaux non détectés${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "spéciau|special" && { echo -e "${GREEN}✓ Test 7 (1pt): Caractères spéciaux détectés${NC}"; return 0; } || { echo -e "${RED}✗ Test 7 (1pt): Caractères spéciaux non détectés${NC}"; return 1; }
             ;;
         8)
             # Test 8: Score/Niveau affiché (1pt)
             OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-            echo "$OUTPUT" | grep -qiE "score|niveau|level" && { echo -e "${GREEN}✓ Test 8: Score/Niveau affiché${NC}"; return 0; } || { echo -e "${RED}✗ Test 8: Score/Niveau non affiché${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qiE "score|niveau|level" && { echo -e "${GREEN}✓ Test 8 (1pt): Score/Niveau affiché${NC}"; return 0; } || { echo -e "${RED}✗ Test 8 (1pt): Score/Niveau non affiché${NC}"; return 1; }
             ;;
         *)
             echo -e "${RED}✗ Numéro de test invalide: $test_num${NC}"

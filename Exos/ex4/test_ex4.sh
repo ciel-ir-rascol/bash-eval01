@@ -40,40 +40,40 @@ run_test() {
         1)
             # Test 1: Somme (3pts)
             if test_menu "5 10 15" "1" "somme.*30\|30"; then
-                echo -e "${GREEN}✓ Test 1: Somme 5+10+15=30${NC}"
+                echo -e "${GREEN}✓ Test 1 (3pts): Somme 5+10+15=30${NC}"
                 return 0
             else
-                echo -e "${RED}✗ Test 1: Somme incorrecte${NC}"
+                echo -e "${RED}✗ Test 1 (3pts): Somme incorrecte${NC}"
                 return 1
             fi
             ;;
         2)
             # Test 2: Moyenne (3pts)
             if test_menu "10 20 30 40" "2" "moyenne.*25\|25"; then
-                echo -e "${GREEN}✓ Test 2: Moyenne 10,20,30,40=25${NC}"
+                echo -e "${GREEN}✓ Test 2 (3pts): Moyenne 10,20,30,40=25${NC}"
                 return 0
             else
-                echo -e "${RED}✗ Test 2: Moyenne incorrecte${NC}"
+                echo -e "${RED}✗ Test 2 (3pts): Moyenne incorrecte${NC}"
                 return 1
             fi
             ;;
         3)
             # Test 3: Minimum (3pts)
             if test_menu "15 3 8 20" "3" "minimum.*3\|3"; then
-                echo -e "${GREEN}✓ Test 3: Minimum 15,3,8,20=3${NC}"
+                echo -e "${GREEN}✓ Test 3 (3pts): Minimum 15,3,8,20=3${NC}"
                 return 0
             else
-                echo -e "${RED}✗ Test 3: Minimum incorrect${NC}"
+                echo -e "${RED}✗ Test 3 (3pts): Minimum incorrect${NC}"
                 return 1
             fi
             ;;
         4)
             # Test 4: Maximum (3pts)
             if test_menu "7 25 12 8" "4" "maximum.*25\|25"; then
-                echo -e "${GREEN}✓ Test 4: Maximum 7,25,12,8=25${NC}"
+                echo -e "${GREEN}✓ Test 4 (3pts): Maximum 7,25,12,8=25${NC}"
                 return 0
             else
-                echo -e "${RED}✗ Test 4: Maximum incorrect${NC}"
+                echo -e "${RED}✗ Test 4 (3pts): Maximum incorrect${NC}"
                 return 1
             fi
             ;;

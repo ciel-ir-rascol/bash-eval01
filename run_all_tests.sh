@@ -18,28 +18,6 @@ NC='\033[0m' # No Color
 # Détecter le système d'exploitation
 OS_TYPE=$(uname -s)
 
-# Vérifier la disponibilité de bc (nécessaire pour les calculs avec décimales)
-if ! command -v bc &> /dev/null; then
-    echo -e "${RED}╔════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${RED}║                    ERREUR DE DÉPENDANCE                        ║${NC}"
-    echo -e "${RED}╚════════════════════════════════════════════════════════════════╝${NC}"
-    echo ""
-    echo -e "${RED}Le programme 'bc' n'est pas installé.${NC}"
-    echo ""
-    if [[ "$OS_TYPE" == "Linux" ]]; then
-        echo "Pour l'installer sur Ubuntu/Debian :"
-        echo "  sudo apt-get update && sudo apt-get install -y bc"
-        echo ""
-        echo "Pour l'installer sur Fedora/RHEL :"
-        echo "  sudo dnf install -y bc"
-    elif [[ "$OS_TYPE" == "Darwin" ]]; then
-        echo "Pour l'installer sur macOS :"
-        echo "  brew install bc"
-    fi
-    echo ""
-    exit 1
-fi
-
 # Déterminer le type de grep (GNU ou BSD)
 GREP_TYPE="gnu"
 if ! grep -P "test" <<< "test" &> /dev/null; then
@@ -68,13 +46,13 @@ echo -e "${BLUE}Plateforme détectée : $OS_TYPE (grep: $GREP_TYPE)${NC}"
 echo ""
 
 TOTAL_SCORE=0
-TOTAL_MAX=24  # 5 + 5 + 6 + 8 (+ 4 bonus)
+TOTAL_MAX=36  # 7 + 8 + 9 + 12 (+ 5 bonus)
 
 ################################################################################
 # Exo 1
 ################################################################################
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-echo -e "${BLUE}Exercice 1 : Calculatrice simple (5 pts)${NC}"
+echo -e "${BLUE}Exercice 1 : Calculatrice simple (7 pts)${NC}"
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
 echo ""
 
@@ -103,7 +81,7 @@ sleep 1
 # Exo 2
 ################################################################################
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-echo -e "${BLUE}Exercice 2 : Vérificateur mot de passe (5 pts)${NC}"
+echo -e "${BLUE}Exercice 2 : Vérificateur mot de passe (8 pts)${NC}"
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
 echo ""
 
@@ -132,7 +110,7 @@ sleep 1
 # Exo 3
 ################################################################################
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-echo -e "${BLUE}Exercice 3 : Analyseur de logs (6 pts)${NC}"
+echo -e "${BLUE}Exercice 3 : Analyseur de logs (9 pts)${NC}"
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
 echo ""
 
@@ -161,7 +139,7 @@ sleep 1
 # Exo 4
 ################################################################################
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-echo -e "${BLUE}Exercice 4 : Menu interactif (8 pts)${NC}"
+echo -e "${BLUE}Exercice 4 : Menu interactif (12 pts)${NC}"
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
 echo ""
 
@@ -190,7 +168,7 @@ sleep 1
 # Exo 5 BONUS
 ################################################################################
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-echo -e "${BLUE}Exercice 5 BONUS : Compteur fichiers (4 pts)${NC}"
+echo -e "${BLUE}Exercice 5 BONUS : Compteur fichiers (5 pts)${NC}"
 echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
 echo ""
 
@@ -223,32 +201,27 @@ echo "║                      RÉSUMÉ GLOBAL                             ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
 
-# Note : Le barème total est sur 26 pts (24 exercices + 2 qualité code)
-# Les tests automatiques donnent le score sur 24 pts
-# L'enseignant ajoute 0-2 pts pour la qualité du code manuellement
+# Note : Le barème total est sur 36 pts obligatoires (sans bonus)
+# Les tests automatiques donnent le score sur 36 pts
+# Le bonus peut ajouter jusqu'à 5 pts supplémentaires
 
 echo "┌────────────────────────────────────────────────────────────┐"
-echo "│ Exercice 1 : ${SCORE_EX1:-0} / 5 pts                                  │"
-echo "│ Exercice 2 : ${SCORE_EX2:-0} / 5 pts                                  │"
-echo "│ Exercice 3 : ${SCORE_EX3:-0} / 6 pts                                  │"
-echo "│ Exercice 4 : ${SCORE_EX4:-0} / 8 pts                                  │"
-echo "│ Exercice 5 : ${SCORE_EX5:-0} / 4 pts (BONUS)                          │"
+echo "│ Exercice 1 : ${SCORE_EX1:-0} / 7 pts   (7 tests × 1pt)                │"
+echo "│ Exercice 2 : ${SCORE_EX2:-0} / 8 pts   (8 tests × 1pt)                │"
+echo "│ Exercice 3 : ${SCORE_EX3:-0} / 9 pts   (7 tests × 1pt + 1 test × 2pts)│"
+echo "│ Exercice 4 : ${SCORE_EX4:-0} / 12 pts  (4 tests × 3pts)               │"
+echo "│ Exercice 5 : ${SCORE_EX5:-0} / 5 pts   (5 tests × 1pt - BONUS)        │"
 echo "├────────────────────────────────────────────────────────────┤"
-printf "│ %-56s │\n" "SCORE TESTS AUTO : $TOTAL_SCORE / 24 pts"
+printf "│ %-56s │\n" "SCORE TESTS AUTO : $TOTAL_SCORE / 36 pts"
 echo "│                                                            │"
-echo "│ ⚠️  Barème complet = 26 pts (24 + 2 qualité code)          │"
-echo "│ Note finale = (Score total / 26) × 20                     │"
-echo "│                                                            │"
-echo "│ L'enseignant ajoutera manuellement 0-2 pts pour :         │"
-echo "│   • Commentaires (0.5 pt)                                 │"
-echo "│   • Bonnes pratiques (0.5 pt)                             │"
-echo "│   • Lisibilité (0.5 pt)                                   │"
-echo "│   • Originalité (0.5 pt)                                  │"
+echo "│ ⚠️  Barème complet = 36 pts obligatoires + 5 pts bonus     │"
+echo "│ Note finale = (Score / 36) × 20                           │"
+echo "│ Note avec bonus = min(20, (Score / 36) × 20)             │"
 echo "└────────────────────────────────────────────────────────────┘"
 echo ""
 
-# Affichage coloré selon le score (sur 24 pour les tests auto)
-PERCENTAGE=$(echo "scale=0; $TOTAL_SCORE * 100 / 24" | bc)
+# Affichage coloré selon le score (sur 36 pour les tests auto)
+PERCENTAGE=$(echo "scale=0; $TOTAL_SCORE * 100 / 36" | bc)
 
 if [ "$PERCENTAGE" -ge 80 ]; then
     echo -e "${GREEN}🎉 Excellent travail ! ($PERCENTAGE%)${NC}"

@@ -31,29 +31,29 @@ run_test() {
     case $test_num in
         1)
             # Test 1: Vérification paramètre (1pt)
-            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1: Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1: Vérification paramètre OK${NC}"; return 0; }
+            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1 (1pt): Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1 (1pt): Vérification paramètre OK${NC}"; return 0; }
             ;;
         2)
             # Test 2: Utilisation de find (1pt)
-            grep -q "find" "$SCRIPT" && { echo -e "${GREEN}✓ Test 2: Commande find utilisée${NC}"; return 0; } || { echo -e "${RED}✗ Test 2: Commande find non trouvée${NC}"; return 1; }
+            grep -q "find" "$SCRIPT" && { echo -e "${GREEN}✓ Test 2 (1pt): Commande find utilisée${NC}"; return 0; } || { echo -e "${RED}✗ Test 2 (1pt): Commande find non trouvée${NC}"; return 1; }
             ;;
         3)
             # Test 3: Extraction extension (1pt)
-            grep -qE "##\*\.|%\.\*|\.tar" "$SCRIPT" && { echo -e "${GREEN}✓ Test 3: Extraction extension détectée${NC}"; return 0; } || { echo -e "${RED}✗ Test 3: Extraction extension non détectée${NC}"; return 1; }
+            grep -qE "##\*\.|%\.\*|\.tar" "$SCRIPT" && { echo -e "${GREEN}✓ Test 3 (1pt): Extraction extension détectée${NC}"; return 0; } || { echo -e "${RED}✗ Test 3 (1pt): Extraction extension non détectée${NC}"; return 1; }
             ;;
         4)
             # Test 4: Comptage .txt (1pt)
             setup_test_env
             OUTPUT=$($SCRIPT "$TEST_DIR" 2>&1)
             cleanup_test_env
-            echo "$OUTPUT" | grep -iE "\.txt.*4" && { echo -e "${GREEN}✓ Test 4: Comptage .txt correct (4)${NC}"; return 0; } || { echo -e "${RED}✗ Test 4: Comptage .txt incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -iE "\.txt.*4" && { echo -e "${GREEN}✓ Test 4 (1pt): Comptage .txt correct (4)${NC}"; return 0; } || { echo -e "${RED}✗ Test 4 (1pt): Comptage .txt incorrect${NC}"; return 1; }
             ;;
         5)
             # Test 5: Comptage .sh (1pt)
             setup_test_env
             OUTPUT=$($SCRIPT "$TEST_DIR" 2>&1)
             cleanup_test_env
-            echo "$OUTPUT" | grep -iE "\.sh.*2" && { echo -e "${GREEN}✓ Test 5: Comptage .sh correct (2)${NC}"; return 0; } || { echo -e "${RED}✗ Test 5: Comptage .sh incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -iE "\.sh.*2" && { echo -e "${GREEN}✓ Test 5 (1pt): Comptage .sh correct (2)${NC}"; return 0; } || { echo -e "${RED}✗ Test 5 (1pt): Comptage .sh incorrect${NC}"; return 1; }
             ;;
         *)
             echo -e "${RED}✗ Numéro de test invalide: $test_num${NC}"

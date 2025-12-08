@@ -17,41 +17,41 @@ run_test() {
     case $test_num in
         1)
             # Test 1: Vérification paramètre (1pt)
-            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1: Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1: Vérification paramètre OK${NC}"; return 0; }
+            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1 (1pt): Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1 (1pt): Vérification paramètre OK${NC}"; return 0; }
             ;;
         2)
             # Test 2: Vérification fichier inexistant (1pt)
-            $SCRIPT "/inexistant" > /dev/null 2>&1 && { echo -e "${RED}✗ Test 2: Devrait échouer fichier inexistant${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 2: Vérification fichier OK${NC}"; return 0; }
+            $SCRIPT "/inexistant" > /dev/null 2>&1 && { echo -e "${RED}✗ Test 2 (1pt): Devrait échouer fichier inexistant${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 2 (1pt): Vérification fichier OK${NC}"; return 0; }
             ;;
         3)
             # Test 3: Total lignes correct (1pt)
             OUTPUT=$($SCRIPT "$LOGFILE" 2>&1)
-            echo "$OUTPUT" | grep -qE "([Tt]otal|lignes).*8" && { echo -e "${GREEN}✓ Test 3: Total lignes correct (8)${NC}"; return 0; } || { echo -e "${RED}✗ Test 3: Total lignes incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qE "([Tt]otal|lignes).*8" && { echo -e "${GREEN}✓ Test 3 (1pt): Total lignes correct (8)${NC}"; return 0; } || { echo -e "${RED}✗ Test 3 (1pt): Total lignes incorrect${NC}"; return 1; }
             ;;
         4)
             # Test 4: Comptage INFO (1pt)
             OUTPUT=$($SCRIPT "$LOGFILE" 2>&1)
-            echo "$OUTPUT" | grep -iE "INFO.*4" && { echo -e "${GREEN}✓ Test 4: INFO correct (4)${NC}"; return 0; } || { echo -e "${RED}✗ Test 4: INFO incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -iE "INFO.*4" && { echo -e "${GREEN}✓ Test 4 (1pt): INFO correct (4)${NC}"; return 0; } || { echo -e "${RED}✗ Test 4 (1pt): INFO incorrect${NC}"; return 1; }
             ;;
         5)
             # Test 5: Comptage WARNING (1pt)
             OUTPUT=$($SCRIPT "$LOGFILE" 2>&1)
-            echo "$OUTPUT" | grep -iE "WARNING.*2" && { echo -e "${GREEN}✓ Test 5: WARNING correct (2)${NC}"; return 0; } || { echo -e "${RED}✗ Test 5: WARNING incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -iE "WARNING.*2" && { echo -e "${GREEN}✓ Test 5 (1pt): WARNING correct (2)${NC}"; return 0; } || { echo -e "${RED}✗ Test 5 (1pt): WARNING incorrect${NC}"; return 1; }
             ;;
         6)
             # Test 6: Comptage ERROR (1pt)
             OUTPUT=$($SCRIPT "$LOGFILE" 2>&1)
-            echo "$OUTPUT" | grep -iE "ERROR.*2" && { echo -e "${GREEN}✓ Test 6: ERROR correct (2)${NC}"; return 0; } || { echo -e "${RED}✗ Test 6: ERROR incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -iE "ERROR.*2" && { echo -e "${GREEN}✓ Test 6 (1pt): ERROR correct (2)${NC}"; return 0; } || { echo -e "${RED}✗ Test 6 (1pt): ERROR incorrect${NC}"; return 1; }
             ;;
         7)
             # Test 7: Taux d'erreurs (2pts)
             OUTPUT=$($SCRIPT "$LOGFILE" 2>&1)
-            echo "$OUTPUT" | grep -qE "25|taux.*25" && { echo -e "${GREEN}✓ Test 7: Taux d'erreurs correct (25%)${NC}"; return 0; } || { echo -e "${RED}✗ Test 7: Taux d'erreurs incorrect${NC}"; return 1; }
+            echo "$OUTPUT" | grep -qE "25|taux.*25" && { echo -e "${GREEN}✓ Test 7 (2pts): Taux d'erreurs correct (25%)${NC}"; return 0; } || { echo -e "${RED}✗ Test 7 (2pts): Taux d'erreurs incorrect${NC}"; return 1; }
             ;;
         8)
             # Test 8: Dernière erreur affichée (1pt)
             OUTPUT=$($SCRIPT "$LOGFILE" 2>&1)
-            echo "$OUTPUT" | grep -q "config.json" && { echo -e "${GREEN}✓ Test 8: Dernière erreur affichée${NC}"; return 0; } || { echo -e "${RED}✗ Test 8: Dernière erreur non affichée${NC}"; return 1; }
+            echo "$OUTPUT" | grep -q "config.json" && { echo -e "${GREEN}✓ Test 8 (1pt): Dernière erreur affichée${NC}"; return 0; } || { echo -e "${RED}✗ Test 8 (1pt): Dernière erreur non affichée${NC}"; return 1; }
             ;;
         *)
             echo -e "${RED}✗ Numéro de test invalide: $test_num${NC}"

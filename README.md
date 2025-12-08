@@ -9,8 +9,8 @@
 - **Travail individuel** : Cette évaluation est strictement individuelle
 - **Documentation autorisée** : Vous pouvez consulter la documentation Bash, les man pages, et vos TPs précédents
 - **Tests** : Chaque exercice dispose de tests automatisés pour valider votre solution
-- **Barème** : Ex1 (5 pts) + Ex2 (5 pts) + Ex3 (6 pts) + Ex4 (8 pts) + Qualité (2 pts) = 26 pts → noté sur 20
-- **Bonus** : Ex5 (+4 pts bonus)
+- **Barème** : Ex1 (7 pts) + Ex2 (8 pts) + Ex3 (9 pts) + Ex4 (12 pts) = 36 pts → noté sur 20
+- **Bonus** : Ex5 (+5 pts bonus)
 
 ## Structure du repository
 
@@ -49,7 +49,7 @@ votre-repo/
 
 ---
 
-## Exo 1 : Calculatrice simple (5 pts) - 30 min
+## Exo 1 : Calculatrice simple (7 pts - 7 tests × 1pt) - 30 min
 
 ### Objectif
 
@@ -120,17 +120,19 @@ if [ $# -ne 3 ]; then
 fi
 ```
 
-### Barème (5 pts)
+### Barème (7 pts - tests individuels)
 
-- Vérification 3 paramètres (1 pt)
-- Vérification opérateur valide (1 pt)
-- Calculs corrects pour +, -, * (1.5 pt)
-- Division et gestion division par zéro (1 pt)
-- Affichage correct du résultat (0.5 pt)
+- Test 1: Vérification 3 paramètres (1 pt)
+- Test 2: Addition correcte (1 pt)
+- Test 3: Soustraction correcte (1 pt)
+- Test 4: Multiplication correcte (1 pt)
+- Test 5: Division correcte (1 pt)
+- Test 6: Gestion division par zéro (1 pt)
+- Test 7: Opérateur invalide détecté (1 pt)
 
 ---
 
-## Exo 2 : Vérificateur de mot de passe (5 pts) - 40 min
+## Exo 2 : Vérificateur de mot de passe (8 pts - 8 tests × 1pt) - 40 min
 
 ### Objectif
 
@@ -209,18 +211,20 @@ if [[ "$mot_de_passe" =~ [!@#\$%\^&*()_+\-=\[\]{}] ]]; then
 fi
 ```
 
-### Barème (5 pts)
+### Barème (8 pts - tests individuels)
 
-- Vérification du paramètre (0.5 pt)
-- Test longueur (0.5 pt)
-- Test majuscules/minuscules (1 pt)
-- Test chiffres (0.5 pt)
-- Test caractères spéciaux (1 pt)
-- Calcul du score et affichage niveau (1.5 pt)
+- Test 1: Vérification du paramètre (1 pt)
+- Test 2: Mot de passe faible détecté (1 pt)
+- Test 3: Détection longueur (1 pt)
+- Test 4: Détection majuscules (1 pt)
+- Test 5: Détection minuscules (1 pt)
+- Test 6: Détection chiffres (1 pt)
+- Test 7: Détection caractères spéciaux (1 pt)
+- Test 8: Score/Niveau affiché (1 pt)
 
 ---
 
-## Exo 3 : Analyseur de logs (6 pts) - 50 min
+## Exo 3 : Analyseur de logs (9 pts - 7×1pt + 1×2pts) - 50 min
 
 ### Objectif
 
@@ -304,19 +308,20 @@ derniere_erreur=$(grep "ERROR" "$fichier" | tail -1)
 taux=$(( nb_erreurs * 100 / total ))
 ```
 
-### Barème (6 pts)
+### Barème (9 pts - tests individuels)
 
-- Vérification paramètre et fichier (1 pt)
-- Comptage total lignes (0.5 pt)
-- Comptage INFO (0.5 pt)
-- Comptage WARNING (0.5 pt)
-- Comptage ERROR (0.5 pt)
-- Calcul taux d'erreurs (1.5 pt)
-- Affichage dernière erreur (1.5 pt)
+- Test 1: Vérification paramètre (1 pt)
+- Test 2: Vérification fichier inexistant (1 pt)
+- Test 3: Comptage total lignes (1 pt)
+- Test 4: Comptage INFO (1 pt)
+- Test 5: Comptage WARNING (1 pt)
+- Test 6: Comptage ERROR (1 pt)
+- Test 7: Calcul taux d'erreurs (2 pts)
+- Test 8: Affichage dernière erreur (1 pt)
 
 ---
 
-## Exo 4 : Menu interactif de calculs (8 pts) - 60 min
+## Exo 4 : Menu interactif de calculs (12 pts - 4 tests × 3pts) - 60 min
 
 ### Objectif
 
@@ -416,19 +421,16 @@ case $choix in
 esac
 ```
 
-### Barème (8 pts)
+### Barème (12 pts - tests individuels)
 
-- Lecture et stockage des nombres (1 pt)
-- Menu avec structure case (1.5 pt)
-- Calcul de la somme (1 pt)
-- Calcul de la moyenne (1.5 pt)
-- Recherche du minimum (1.5 pt)
-- Recherche du maximum (1 pt)
-- Boucle et gestion quitter (0.5 pt)
+- Test 1: Calcul de la somme (3 pts)
+- Test 2: Calcul de la moyenne (3 pts)
+- Test 3: Recherche du minimum (3 pts)
+- Test 4: Recherche du maximum (3 pts)
 
 ---
 
-## Exo 5 BONUS : Compteur de fichiers par type (4 pts) - 30 min
+## Exo 5 BONUS : Compteur de fichiers par type (5 pts - 5 tests × 1pt) - 30 min
 
 ### Objectif
 
@@ -503,13 +505,13 @@ compteurs["txt"]=5
 echo ${compteurs["txt"]}
 ```
 
-### Barème BONUS (4 pts)
+### Barème BONUS (5 pts - tests individuels)
 
-- Vérification paramètre et dossier (0.5 pt)
-- Utilisation correcte de find (1 pt)
-- Extraction des extensions (1 pt)
-- Comptage par extension (1 pt)
-- Affichage formaté (0.5 pt)
+- Test 1: Vérification paramètre (1 pt)
+- Test 2: Utilisation correcte de find (1 pt)
+- Test 3: Extraction des extensions (1 pt)
+- Test 4: Comptage .txt correct (1 pt)
+- Test 5: Comptage .sh correct (1 pt)
 
 ---
 
@@ -562,24 +564,25 @@ Avant de rendre votre travail, vérifiez :
 
 ## Barème récapitulatif
 
-| Exercice | Points | Durée | Type |
-|----------|--------|-------|------|
-| Ex1 : Calculatrice simple | 5 pts | 30 min | Facile |
-| Ex2 : Vérificateur mot de passe | 5 pts | 40 min | Facile |
-| Ex3 : Analyseur de logs | 6 pts | 50 min | Moyen |
-| Ex4 : Menu interactif | 8 pts | 60 min | Moyen |
-| Qualité du code | 2 pts | - | - |
-| **TOTAL Obligatoire** | **26 pts** | **3h** | - |
-| Ex5 : Compteur fichiers (BONUS) | +4 pts | 30 min | Moyen |
+| Exercice | Points | Tests | Durée | Type |
+|----------|--------|-------|-------|------|
+| Ex1 : Calculatrice simple | 7 pts | 7 tests × 1pt | 30 min | Facile |
+| Ex2 : Vérificateur mot de passe | 8 pts | 8 tests × 1pt | 40 min | Facile |
+| Ex3 : Analyseur de logs | 9 pts | 7 tests × 1pt + 1 test × 2pts | 50 min | Moyen |
+| Ex4 : Menu interactif | 12 pts | 4 tests × 3pts | 60 min | Moyen |
+| **TOTAL Obligatoire** | **36 pts** | **32 tests** | **3h** | - |
+| Ex5 : Compteur fichiers (BONUS) | +5 pts | 5 tests × 1pt | 30 min | Moyen |
 
-**Note finale** = (Score obtenu / 26) × 20
+**Note finale** = (Score obtenu / 36) × 20
 
-### Critères de qualité du code (2 pts)
+### Détail des tests
 
-- **Commentaires** (0.5 pt) : Code bien commenté, variables et étapes importantes expliquées
-- **Bonnes pratiques** (0.5 pt) : Shebang présent, gestion d'erreurs cohérente
-- **Lisibilité** (0.5 pt) : Indentation correcte, noms de variables explicites
-- **Originalité** (0.5 pt) : Solutions élégantes ou optimisations pertinentes
+Chaque exercice est décomposé en tests unitaires indépendants :
+- **Ex1** : 7 tests (paramètres, +, -, *, /, div/0, op invalide)
+- **Ex2** : 8 tests (paramètre, faible, longueur, maj, min, chiffres, spéciaux, score)
+- **Ex3** : 8 tests (paramètre, fichier, total, INFO, WARNING, ERROR, taux×2, dernière erreur)
+- **Ex4** : 4 tests (somme×3, moyenne×3, minimum×3, maximum×3)
+- **Ex5** : 5 tests BONUS (paramètre, find, extension, .txt, .sh)
 
 **Temps recommandé** : ~20 min pour relecture et tests finaux
 

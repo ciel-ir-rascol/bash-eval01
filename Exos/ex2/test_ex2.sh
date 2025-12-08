@@ -1,52 +1,90 @@
 #!/bin/bash
 GREEN='\033[0;32m'; RED='\033[0;31m'; NC='\033[0m'
 SCRIPT="./verif_password.sh"
-SCORE=0; MAX=5
+MAX=8
 
-# Vérifier la disponibilité de bc
-if ! command -v bc &> /dev/null; then
-    echo "ERREUR: La commande 'bc' n'est pas installée."
-    echo "Installation: sudo apt-get install -y bc"
-    exit 1
+# Note: bc n'est plus nécessaire pour le script de test (scores entiers)
+
+# Vérifier l'existence du script
+[ ! -f "$SCRIPT" ] && echo -e "${RED}❌ Script inexistant${NC}" && exit 1
+chmod +x "$SCRIPT" 2>/dev/null
+
+# Fonction pour exécuter un test individuel
+run_test() {
+    local test_num=$1
+    case $test_num in
+        1)
+            # Test 1: Vérification paramètre (1pt)
+            $SCRIPT > /dev/null 2>&1 && { echo -e "${RED}✗ Test 1: Devrait échouer sans paramètre${NC}"; return 1; } || { echo -e "${GREEN}✓ Test 1: Vérification paramètre OK${NC}"; return 0; }
+            ;;
+        2)
+            # Test 2: Mot de passe faible détecté (1pt)
+            OUTPUT=$($SCRIPT "abc" 2>&1)
+            echo "$OUTPUT" | grep -qiE "faible|weak" && { echo -e "${GREEN}✓ Test 2: Mot de passe faible détecté${NC}"; return 0; } || { echo -e "${RED}✗ Test 2: Niveau faible non détecté${NC}"; return 1; }
+            ;;
+        3)
+            # Test 3: Détection longueur (1pt)
+            OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
+            echo "$OUTPUT" | grep -qiE "longueur|length" && { echo -e "${GREEN}✓ Test 3: Longueur vérifiée${NC}"; return 0; } || { echo -e "${RED}✗ Test 3: Longueur non vérifiée${NC}"; return 1; }
+            ;;
+        4)
+            # Test 4: Détection majuscules (1pt)
+            OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
+            echo "$OUTPUT" | grep -qiE "majuscule|uppercase" && { echo -e "${GREEN}✓ Test 4: Majuscules détectées${NC}"; return 0; } || { echo -e "${RED}✗ Test 4: Majuscules non détectées${NC}"; return 1; }
+            ;;
+        5)
+            # Test 5: Détection minuscules (1pt)
+            OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
+            echo "$OUTPUT" | grep -qiE "minuscule|lowercase" && { echo -e "${GREEN}✓ Test 5: Minuscules détectées${NC}"; return 0; } || { echo -e "${RED}✗ Test 5: Minuscules non détectées${NC}"; return 1; }
+            ;;
+        6)
+            # Test 6: Détection chiffres (1pt)
+            OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
+            echo "$OUTPUT" | grep -qiE "chiffre|digit|nombre" && { echo -e "${GREEN}✓ Test 6: Chiffres détectés${NC}"; return 0; } || { echo -e "${RED}✗ Test 6: Chiffres non détectés${NC}"; return 1; }
+            ;;
+        7)
+            # Test 7: Détection caractères spéciaux (1pt)
+            OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
+            echo "$OUTPUT" | grep -qiE "spéciau|special" && { echo -e "${GREEN}✓ Test 7: Caractères spéciaux détectés${NC}"; return 0; } || { echo -e "${RED}✗ Test 7: Caractères spéciaux non détectés${NC}"; return 1; }
+            ;;
+        8)
+            # Test 8: Score/Niveau affiché (1pt)
+            OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
+            echo "$OUTPUT" | grep -qiE "score|niveau|level" && { echo -e "${GREEN}✓ Test 8: Score/Niveau affiché${NC}"; return 0; } || { echo -e "${RED}✗ Test 8: Score/Niveau non affiché${NC}"; return 1; }
+            ;;
+        *)
+            echo -e "${RED}✗ Numéro de test invalide: $test_num${NC}"
+            return 1
+            ;;
+    esac
+}
+
+# Si un argument est fourni, exécuter uniquement ce test
+if [ $# -eq 1 ]; then
+    TEST_NUM=$1
+    if ! [[ "$TEST_NUM" =~ ^[0-9]+$ ]] || [ "$TEST_NUM" -lt 1 ] || [ "$TEST_NUM" -gt $MAX ]; then
+        echo -e "${RED}Erreur: Le numéro de test doit être entre 1 et $MAX${NC}"
+        exit 1
+    fi
+    run_test $TEST_NUM
+    exit $?
 fi
 
+# Sinon, exécuter tous les tests
 echo "=========================================="
 echo "Test Ex2 : Vérificateur mot de passe"
 echo "=========================================="
 echo ""
 
-[ ! -f "$SCRIPT" ] && echo -e "${RED}❌ Script inexistant${NC}" && exit 1
-chmod +x "$SCRIPT" 2>/dev/null
+SCORE=0
+for i in $(seq 1 $MAX); do
+    if run_test $i; then
+        SCORE=$((SCORE + 1))
+    fi
+done
 
-# Test 1: Vérification paramètre (0.5pt)
-$SCRIPT > /dev/null 2>&1 && echo -e "${RED}✗ Devrait échouer sans paramètre${NC}" || { echo -e "${GREEN}✓ Vérification paramètre OK${NC}"; SCORE=$(echo "$SCORE + 0.5" | bc); }
+echo ""
+echo "Score : $SCORE / $MAX"
 
-# Test 2: Mot de passe faible (1pt)
-OUTPUT=$($SCRIPT "abc" 2>&1)
-echo "$OUTPUT" | grep -qiE "faible|weak" && { echo -e "${GREEN}✓ Mot de passe faible détecté${NC}"; SCORE=$(echo "$SCORE + 1" | bc); } || echo -e "${RED}✗ Niveau faible non détecté${NC}"
-
-# Test 3: Détection longueur (0.5pt)
-OUTPUT=$($SCRIPT "MotDePasse123!" 2>&1)
-echo "$OUTPUT" | grep -qiE "longueur|length" && { echo -e "${GREEN}✓ Longueur vérifiée${NC}"; SCORE=$(echo "$SCORE + 0.5" | bc); } || echo -e "${RED}✗ Longueur non vérifiée${NC}"
-
-# Test 4: Détection majuscules/minuscules (1pt)
-echo "$OUTPUT" | grep -qiE "majuscule|uppercase" && { echo -e "${GREEN}✓ Majuscules détectées${NC}"; SCORE=$(echo "$SCORE + 0.5" | bc); } || echo -e "${RED}✗ Majuscules non détectées${NC}"
-echo "$OUTPUT" | grep -qiE "minuscule|lowercase" && { echo -e "${GREEN}✓ Minuscules détectées${NC}"; SCORE=$(echo "$SCORE + 0.5" | bc); } || echo -e "${RED}✗ Minuscules non détectées${NC}"
-
-# Test 5: Détection chiffres (0.5pt)
-echo "$OUTPUT" | grep -qiE "chiffre|digit|nombre" && { echo -e "${GREEN}✓ Chiffres détectés${NC}"; SCORE=$(echo "$SCORE + 0.5" | bc); } || echo -e "${RED}✗ Chiffres non détectés${NC}"
-
-# Test 6: Détection caractères spéciaux (1pt)
-echo "$OUTPUT" | grep -qiE "spéciau|special" && { echo -e "${GREEN}✓ Caractères spéciaux détectés${NC}"; SCORE=$(echo "$SCORE + 1" | bc); } || echo -e "${RED}✗ Caractères spéciaux non détectés${NC}"
-
-# Test 7: Score/Niveau affiché (1pt)
-echo "$OUTPUT" | grep -qiE "score|niveau|level" && { echo -e "${GREEN}✓ Score/Niveau affiché${NC}"; SCORE=$(echo "$SCORE + 1" | bc); } || echo -e "${RED}✗ Score/Niveau non affiché${NC}"
-
-echo ""; echo "Score : $SCORE / $MAX"
-
-# Retourner un code d'erreur si le score n'est pas parfait (pour GitHub Classroom)
-if (( $(echo "$SCORE < $MAX" | bc -l) )); then
-    exit 1
-else
-    exit 0
-fi
+# Retourner un code d'erreur si le score n'est pas parfait
+[ $SCORE -eq $MAX ] && exit 0 || exit 1

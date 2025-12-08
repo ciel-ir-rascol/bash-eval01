@@ -1,54 +1,324 @@
 {
   "tests": [
     {
-      "name": "Ex1 - Calculatrice simple",
-      "setup": "sudo apt-get update && sudo apt-get install -y bc",
-      "run": "cd Exos/ex1 && chmod +x test_ex1.sh && ./test_ex1.sh",
+      "name": "Ex1.1 - Vérification paramètres",
+      "setup": "",
+      "run": "cd Exos/ex1 && chmod +x test_ex1.sh && ./test_ex1.sh 1",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 2,
-      "points": 5
+      "points": 1
     },
     {
-      "name": "Ex2 - Vérificateur mot de passe",
-      "setup": "sudo apt-get update && sudo apt-get install -y bc",
-      "run": "cd Exos/ex2 && chmod +x test_ex2.sh && ./test_ex2.sh",
+      "name": "Ex1.2 - Addition",
+      "setup": "",
+      "run": "cd Exos/ex1 && ./test_ex1.sh 2",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 2,
-      "points": 5
+      "points": 1
     },
     {
-      "name": "Ex3 - Analyseur de logs",
-      "setup": "sudo apt-get update && sudo apt-get install -y bc",
-      "run": "cd Exos/ex3 && chmod +x test_ex3.sh && ./test_ex3.sh",
+      "name": "Ex1.3 - Soustraction",
+      "setup": "",
+      "run": "cd Exos/ex1 && ./test_ex1.sh 3",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 2,
-      "points": 6
+      "points": 1
     },
     {
-      "name": "Ex4 - Menu interactif",
-      "setup": "sudo apt-get update && sudo apt-get install -y bc",
-      "run": "cd Exos/ex4 && chmod +x test_ex4.sh && ./test_ex4.sh",
+      "name": "Ex1.4 - Multiplication",
+      "setup": "",
+      "run": "cd Exos/ex1 && ./test_ex1.sh 4",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 2,
-      "points": 8
+      "points": 1
     },
     {
-      "name": "Ex5 - Compteur fichiers (BONUS)",
-      "setup": "sudo apt-get update && sudo apt-get install -y bc",
-      "run": "cd Exos/ex5 && chmod +x test_ex5.sh && ./test_ex5.sh",
+      "name": "Ex1.5 - Division",
+      "setup": "",
+      "run": "cd Exos/ex1 && ./test_ex1.sh 5",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 2,
-      "points": 4
+      "points": 1
+    },
+    {
+      "name": "Ex1.6 - Division par zéro",
+      "setup": "",
+      "run": "cd Exos/ex1 && ./test_ex1.sh 6",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex1.7 - Opérateur invalide",
+      "setup": "",
+      "run": "cd Exos/ex1 && ./test_ex1.sh 7",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.1 - Vérification paramètre",
+      "setup": "",
+      "run": "cd Exos/ex2 && chmod +x test_ex2.sh && ./test_ex2.sh 1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.2 - Mot de passe faible",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.3 - Détection longueur",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.4 - Détection majuscules",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 4",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.5 - Détection minuscules",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 5",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.6 - Détection chiffres",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 6",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.7 - Détection caractères spéciaux",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 7",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex2.8 - Score/Niveau affiché",
+      "setup": "",
+      "run": "cd Exos/ex2 && ./test_ex2.sh 8",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.1 - Vérification paramètre",
+      "setup": "",
+      "run": "cd Exos/ex3 && chmod +x test_ex3.sh && ./test_ex3.sh 1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.2 - Vérification fichier inexistant",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.3 - Total lignes",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.4 - Comptage INFO",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 4",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.5 - Comptage WARNING",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 5",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.6 - Comptage ERROR",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 6",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex3.7 - Taux d'erreurs",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 7",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 2
+    },
+    {
+      "name": "Ex3.8 - Dernière erreur",
+      "setup": "",
+      "run": "cd Exos/ex3 && ./test_ex3.sh 8",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex4.1 - Somme",
+      "setup": "",
+      "run": "cd Exos/ex4 && chmod +x test_ex4.sh && ./test_ex4.sh 1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "Ex4.2 - Moyenne",
+      "setup": "",
+      "run": "cd Exos/ex4 && ./test_ex4.sh 2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "Ex4.3 - Minimum",
+      "setup": "",
+      "run": "cd Exos/ex4 && ./test_ex4.sh 3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "Ex4.4 - Maximum",
+      "setup": "",
+      "run": "cd Exos/ex4 && ./test_ex4.sh 4",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "Ex5.1 - Vérification paramètre (BONUS)",
+      "setup": "",
+      "run": "cd Exos/ex5 && chmod +x test_ex5.sh && ./test_ex5.sh 1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex5.2 - Utilisation find (BONUS)",
+      "setup": "",
+      "run": "cd Exos/ex5 && ./test_ex5.sh 2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex5.3 - Extraction extension (BONUS)",
+      "setup": "",
+      "run": "cd Exos/ex5 && ./test_ex5.sh 3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex5.4 - Comptage .txt (BONUS)",
+      "setup": "",
+      "run": "cd Exos/ex5 && ./test_ex5.sh 4",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
+    },
+    {
+      "name": "Ex5.5 - Comptage .sh (BONUS)",
+      "setup": "",
+      "run": "cd Exos/ex5 && ./test_ex5.sh 5",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 1
     }
   ]
 }

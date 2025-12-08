@@ -241,12 +241,27 @@ jobs:
               output: {
                 title: `Score: ${totalAvecBonus.toFixed(1)}/${maxTotal} (Note: ${noteFinale}/20)`,
                 summary: summary,
-                text: `Total points: ${totalAvecBonus.toFixed(1)}/${maxTotal}\n\nPoints breakdown:\n- Ex1: ${scores.ex1}/${maxScores.ex1}\n- Ex2: ${scores.ex2}/${maxScores.ex2}\n- Ex3: ${scores.ex3}/${maxScores.ex3}\n- Ex4: ${scores.ex4}/${maxScores.ex4}\n- Ex5 (BONUS): ${scores.ex5}/${maxScores.ex5}\n- Quality: ${scores.quality}/${maxScores.quality}`
+                text: `Total points: ${totalAvecBonus.toFixed(1)}/${maxTotal}\n\nPoints breakdown:\n- Ex1: ${scores.ex1}/${maxScores.ex1}\n- Ex2: ${scores.ex2}/${maxScores.ex2}\n- Ex3: ${scores.ex3}/${maxScores.ex3}\n- Ex4: ${scores.ex4}/${maxScores.ex4}\n- Ex5 (BONUS): ${scores.ex5}/${maxScores.ex5}\n- Quality: ${scores.quality}/${maxScores.quality}`,
+                annotations: [
+                  {
+                    path: 'README.md',
+                    start_line: 1,
+                    end_line: 1,
+                    annotation_level: 'notice',
+                    message: `Points ${totalAvecBonus.toFixed(1)}/${maxTotal}`,
+                    title: 'Autograding Score'
+                  }
+                ]
               }
             });
 
-            // Définir les outputs pour GitHub Classroom
+            // Afficher le score dans un format que GitHub Classroom peut lire
+            console.log('::notice ::Points ' + totalAvecBonus.toFixed(1) + '/' + maxTotal);
+            console.log('##[notice]Points ' + totalAvecBonus.toFixed(1) + '/' + maxTotal);
+
+            // Définir les outputs pour GitHub Classroom (format exact attendu)
             core.setOutput('Points', `${totalAvecBonus.toFixed(1)}/${maxTotal}`);
+            core.notice(`Points ${totalAvecBonus.toFixed(1)}/${maxTotal}`);
 
             console.log('✅ Check run created:', checkRun.data.html_url);
             console.log(`📊 Final score: ${totalAvecBonus.toFixed(1)}/${maxTotal}`);

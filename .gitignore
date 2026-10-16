@@ -1,38 +1,8 @@
-# Fichiers temporaires
-*.tmp
+# Sauvegardes et fichiers temporaires
 *~
-test_output.txt
-
-# Dossiers de test
-/tmp/
-
-# Fichiers de sauvegarde
 *.bak
 *.swp
-*.swo
 
-# Archives
-*.tar.gz
-*.zip
-
-# Logs système
-/var/log/
-
-# GitHub Actions results
-.github/results/
-
-# macOS
-.DS_Store
-
-# VSCode
-.vscode/
-
-# IDE
-.idea/
-*.iml
+# IA config file
 .claude
-SETUP_GITHUB_CLASSROOM.md
-
-# Ne PAS ignorer les fichiers log de test (nécessaires pour les tests)
-# test_logs/*.log doit rester dans le repo
-!Exos/ex3/test_logs/app.log
+CLAUDE.md

@@ -1,8 +1,0 @@
-2025-12-07 10:15:32 INFO Application démarrée
-2025-12-07 10:16:45 ERROR Connexion à la base de données échouée
-2025-12-07 10:17:12 WARNING Mémoire faible (85%)
-2025-12-07 10:18:03 INFO Utilisateur connecté: alice
-2025-12-07 10:19:21 ERROR Fichier config.json introuvable
-2025-12-07 10:20:15 INFO Sauvegarde effectuée
-2025-12-07 10:21:44 WARNING Disque presque plein (90%)
-2025-12-07 10:22:18 INFO Backup terminé avec succès

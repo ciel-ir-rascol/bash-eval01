@@ -2,15 +2,16 @@
 #
 # verifier.sh — Validation des missions de l'evaluation Bash (bash-eval01)
 # A executer SUR LE POSTE, en utilisateur normal (pas de sudo) :
-#     ~/eval-bash/bash-eval01/scripts/verifier.sh N        (N = numero de mission, 1 a 5)
+#     ~/bash-eval01/scripts/verifier.sh N        (N = numero de mission, 1 a 5)
 #
-# Le script ne modifie rien dans ~/eval-bash : il lance les scripts de l'etudiant
-# sur des valeurs tirees au hasard, dans un dossier temporaire supprime a la fin.
+# Le script ne modifie pas les scripts de l'etudiant : il les lance sur des
+# valeurs tirees au hasard, dans un dossier temporaire cree DANS le depot
+# (.verif-XXXX, ignore par Git) et supprime a la fin. Rien n'est ecrit ailleurs.
 #
 
-BASE="$HOME/eval-bash"
-SUJET="$BASE/bash-eval01"
-OUTILS="$BASE/outils"
+# Racine du depot clone : le dossier parent de scripts/
+DEPOT="$(cd "$(dirname "$0")/.." && pwd)"
+OUTILS="$DEPOT/outils"
 MOT_DE_PASSE="Rascol81"
 
 MISSION="$1"
@@ -33,7 +34,7 @@ case "$MISSION" in
     *) echo "Usage : $0 N     (N = numéro de la mission, de 1 à 5)" >&2; exit 1 ;;
 esac
 
-BAC="$(mktemp -d)"
+BAC="$(mktemp -d "$DEPOT/.verif-XXXXXX")"
 trap 'rm -rf "$BAC"' EXIT
 
 titre() {
@@ -67,7 +68,7 @@ bilan() {
 
 # --- Lancement des scripts de l'etudiant -----------------------------------------
 
-# lance <script> [args...] : execute ~/eval-bash/outils/<script> sans clavier,
+# lance <script> [args...] : execute outils/<script> sans clavier,
 # 5 secondes maximum. Resultat dans SORTIE (stdout + stderr) et CODE.
 lance() {
     local s="$OUTILS/$1"; shift
@@ -93,7 +94,11 @@ shebang()   { head -1 "$OUTILS/$1" | grep -q '^#!/bin/bash'; }
 
 # --- Mission 1 : bienvenue.sh ----------------------------------------------------
 
-sujet_clone()      { git -C "$SUJET" config --get remote.origin.url | grep -Eq 'ciel-ir-rascol/bash-eval01(\.git)?$'; }
+# Depot clone en SSH, depuis un fork (compte de l'etudiant, pas ciel-ir-rascol)
+origine_url()      { git -C "$DEPOT" config --get remote.origin.url; }
+clone_ssh()        { origine_url | grep -Eq '^git@github\.com:[^/]+/bash-eval01(\.git)?$'; }
+clone_fork()       { clone_ssh && ! origine_url | grep -qi '^git@github\.com:ciel-ir-rascol/'; }
+clone_place()      { [ "$DEPOT" = "$HOME/bash-eval01" ]; }
 outils_prepares()  { [ -f "$OUTILS/.eval-bash" ]; }
 bienvenue_login()  { lance bienvenue.sh; succes && contient "Bienvenue $(id -un)"; }
 bienvenue_date()   { lance bienvenue.sh; echo "$SORTIE" | grep -qF "$(date +%d/%m/%Y)"; }
@@ -190,8 +195,11 @@ fi
 case "$MISSION" in
 1)
     titre "Mission 1 — Préparer son poste"
-    ok "Sujet cloné dans ~/eval-bash/bash-eval01"       sujet_clone
-    ok "Dossier ~/eval-bash/outils préparé"             outils_prepares
+    ok "Dépôt cloné dans ~/bash-eval01"                 clone_place
+    ok "Cloné en SSH (git@github.com:…/bash-eval01.git)" clone_ssh
+    ok "Cloné depuis votre fork (et non ciel-ir-rascol)" clone_fork
+    ok "Dossier outils/ préparé dans le dépôt"          outils_prepares
+    info "Dépôt d'origine : $(origine_url)"
     ok "bienvenue.sh commence par #!/bin/bash"          shebang bienvenue.sh
     ok "bienvenue.sh est exécutable"                    executable bienvenue.sh
     ok "Affiche « Bienvenue $(id -un) »"                bienvenue_login

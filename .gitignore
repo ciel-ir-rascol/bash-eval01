@@ -6,3 +6,6 @@
 # IA config file
 .claude
 CLAUDE.md
+
+# Dossiers temporaires de verifier.sh
+.verif-*/

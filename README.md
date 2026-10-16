@@ -15,16 +15,16 @@ Cette évaluation porte sur les notions du **TP01 — Premiers scripts Bash** : 
 > [!IMPORTANT]
 > **Validation par missions successives**
 >
-> Un script de validation, `verifier.sh`, est fourni dans ce dépôt (vous le clonez en mission 1). À la fin de **chaque mission**, lancez-le avec le numéro de la mission :
+> Un script de validation, `verifier.sh`, est fourni dans ce dépôt (vous le forkez et le clonez en mission 1). À la fin de **chaque mission**, lancez-le avec le numéro de la mission :
 > ```bash
-> ~/eval-bash/bash-eval01/scripts/verifier.sh 2       # exemple pour la mission 2
+> ~/bash-eval01/scripts/verifier.sh 2       # exemple pour la mission 2
 > ```
 > - Tant qu'il affiche `NON VALIDEE`, corrigez les points marqués `[ECHEC]` et relancez-le, autant de fois que nécessaire : ce n'est pas pénalisé.
 > - Dès qu'il affiche **`MISSION N VALIDEE`**, **appelez l'enseignant** pour lui montrer le résultat : c'est lui qui reporte les points. **Une mission validée à l'écran mais jamais montrée ne compte pas.**
 >
 > Le script essaie vos programmes avec **d'autres valeurs que celles des exemples**, tirées au hasard : un script qui recopie l'exemple de l'énoncé ne passe pas. Lors de la validation, l'enseignant peut vous poser une question courte sur votre code.
 
-Il n'y a **rien à rendre** : pas de commit, pas de push. Vos scripts restent dans votre dossier personnel.
+Il n'y a **rien à rendre** : pas de commit, pas de push. Tout se passe **dans votre clone** `~/bash-eval01` : rien n'est créé ailleurs sur le poste.
 
 ### Environnement de travail
 
@@ -33,7 +33,8 @@ Il n'y a **rien à rendre** : pas de commit, pas de push. Vos scripts restent da
 | **Poste** | Ubuntu Desktop 24.04 LTS du lycée, **dans votre session** |
 | **Droits** | Aucun `sudo` nécessaire, rien à installer |
 | **Éditeur** | `nano` (ou l'éditeur de votre choix) |
-| **Dossier de travail** | `~/eval-bash/outils` (créé en mission 1) |
+| **GitHub** | Votre compte, avec la clé SSH déclarée pendant le TP Git |
+| **Dossier de travail** | `~/bash-eval01/outils`, dans votre clone (créé en mission 1) |
 
 ### Règles
 
@@ -48,7 +49,7 @@ Il n'y a **rien à rendre** : pas de commit, pas de push. Vos scripts restent da
 
 | Mission | Objectif | Durée conseillée | Points |
 | :---: | --- | :---: | :---: |
-| **1** | Préparer son poste et écrire un premier script | 10 min | 2 |
+| **1** | Forker, cloner et écrire un premier script | 10 min | 2 |
 | **2** | Adresse d'un poste (paramètre, conditions) | 15 min | 4 |
 | **3** | Plan d'adressage (boucle `for`) | 15 min | 4 |
 | **4** | Connexion par mot de passe (`read`, boucle `while`) | 20 min | 5 |
@@ -59,15 +60,15 @@ Les missions se font **dans l'ordre**. Gardez 5 minutes de marge pour les valida
 
 ---
 
-## Mission 1 — Préparer son poste *(2 pts)*
+## Mission 1 — Forker, cloner et préparer *(2 pts)*
 
-1. Créez le dossier `~/eval-bash` et placez-vous dedans.
-2. Clonez-y **ce dépôt** (le sujet), en HTTPS : `https://github.com/ciel-ir-rascol/bash-eval01.git`. Vous devez obtenir le dossier `~/eval-bash/bash-eval01`.
+1. Sur GitHub, **forkez** ce dépôt (`ciel-ir-rascol/bash-eval01`) sur votre compte.
+2. Placez-vous dans votre dossier personnel (`cd ~`) et clonez **votre fork en SSH** : `git@github.com:VOTRE_PSEUDO/bash-eval01.git`. Vous devez obtenir le dossier **`~/bash-eval01`**.
 3. Lancez **une seule fois** le script qui prépare votre dossier de travail :
    ```bash
-   ~/eval-bash/bash-eval01/scripts/preparer.sh
+   ~/bash-eval01/scripts/preparer.sh
    ```
-   Il crée **`~/eval-bash/outils`**, qui contient les 5 scripts à compléter : c'est là que se passe toute la suite.
+   Il crée **`~/bash-eval01/outils`**, dans votre clone, avec les 5 scripts à compléter : c'est là que se passe toute la suite.
 4. Complétez **`bienvenue.sh`** pour qu'il affiche votre login et la date du jour, puis rendez-le exécutable :
    ```text
    $ ./bienvenue.sh
@@ -174,7 +175,7 @@ Le script doit :
 
 Les captures de la salle s'entassent dans un même dossier. Complétez **`ranger.sh`** : il reçoit un **dossier** en paramètre et déplace tous les fichiers **`.log`** de ce dossier dans un sous-dossier **`archives`**. Les autres fichiers ne doivent pas bouger.
 
-Un dossier d'exemple est fourni pour vos essais : `~/eval-bash/outils/captures`.
+Un dossier d'exemple est fourni pour vos essais : `~/bash-eval01/outils/captures`.
 
 ```text
 $ ./ranger.sh captures
@@ -198,7 +199,7 @@ Le script doit :
 Pour retrouver le dossier d'exemple de départ après vos essais :
 
 ```bash
-~/eval-bash/bash-eval01/scripts/preparer.sh --captures
+~/bash-eval01/scripts/preparer.sh --captures
 ```
 
 > [!TIP]
@@ -215,7 +216,9 @@ Pour retrouver le dossier d'exemple de départ après vos essais :
 | `Permission denied` en lançant votre script | Script non exécutable | `chmod +x script.sh` |
 | `command not found` en lançant votre script | `./` oublié | `./script.sh` (et non `script.sh`) |
 | `preparer.sh` : `existe déjà` | Le script a déjà été lancé | Rien à faire, le dossier est prêt ; ne le supprimez pas |
-| `No such file or directory` sur `verifier.sh` | Sujet cloné au mauvais endroit | Le sujet doit être dans `~/eval-bash/bash-eval01` |
+| `No such file or directory` sur `verifier.sh` | Dépôt cloné au mauvais endroit | Le clone doit être `~/bash-eval01` : `mv` du dossier |
+| `Permission denied (publickey)` au clone | Clé SSH absente ou non déclarée sur GitHub | `ssh -T git@github.com` ; sinon refaire la partie SSH du TP Git |
+| Mission 1 : `[ECHEC]` sur « fork » ou « SSH » | Clone du dépôt `ciel-ir-rascol`, ou en HTTPS | `git -C ~/bash-eval01 remote set-url origin git@github.com:VOTRE_PSEUDO/bash-eval01.git` |
 | `[: missing ']'` | Espace manquant dans les crochets | `[ $a -lt 1 ]` : un espace après `[` et avant `]` |
 | `integer expression expected` | Variable vide dans une comparaison | Vérifiez le nombre de paramètres **avant** de comparer |
 | Le script attend sans rien afficher | Un `read` attend une saisie, ou une boucle ne s'arrête pas | `Ctrl`+`C`, puis vérifiez la condition de la boucle |

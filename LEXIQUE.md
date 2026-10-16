@@ -20,7 +20,8 @@ Pour le détail d'une commande : `man commande` (quitter avec `q`) ou `commande 
 | `mv source destination/` | Déplace un fichier dans un dossier |
 | `cat fichier` | Affiche le contenu d'un fichier |
 | `nano fichier` | Édite un fichier (`Ctrl`+`O` puis `Entrée` : enregistrer, `Ctrl`+`X` : quitter) |
-| `git clone URL` | Récupère une copie d'un dépôt Git |
+| `git clone git@github.com:pseudo/station-meteo.git` | Clone un dépôt GitHub en SSH dans le dossier courant |
+| `git remote -v` | Affiche l'adresse du dépôt d'origine (`origin`) |
 
 **Chemins** : `~` = votre dossier personnel, `.` = dossier courant, `..` = dossier parent.
 

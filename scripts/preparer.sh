@@ -2,16 +2,19 @@
 #
 # preparer.sh — Prepare le dossier de travail de l'evaluation Bash (bash-eval01)
 # A executer SUR LE POSTE, en utilisateur normal (pas de sudo), UNE SEULE FOIS :
-#     ~/eval-bash/bash-eval01/scripts/preparer.sh
+#     ~/bash-eval01/scripts/preparer.sh
 #
-# Cree ~/eval-bash/outils : les 5 scripts a completer (non executables) et un
-# dossier d'exemple « captures » pour essayer la mission 5.
+# Cree outils/ DANS le depot clone (rien n'est ecrit ailleurs) : les 5 scripts
+# a completer (non executables) et un dossier d'exemple « captures » pour
+# essayer la mission 5.
 #
 # Pour recreer uniquement le dossier d'exemple (apres des essais) :
-#     ~/eval-bash/bash-eval01/scripts/preparer.sh --captures
+#     ~/bash-eval01/scripts/preparer.sh --captures
 #
 
-OUTILS="$HOME/eval-bash/outils"
+# Racine du depot clone : le dossier parent de scripts/
+DEPOT="$(cd "$(dirname "$0")/.." && pwd)"
+OUTILS="$DEPOT/outils"
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "Ne lancez pas ce script avec sudo : relancez-le en utilisateur normal." >&2

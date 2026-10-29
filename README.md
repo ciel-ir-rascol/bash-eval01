@@ -47,14 +47,20 @@ Il n'y a **rien à rendre** : pas de commit, pas de push. Tout se passe **dans v
 
 ## Sommaire et barème
 
-| Mission | Objectif | Durée conseillée | Points |
-| :---: | --- | :---: | :---: |
-| **1** | Forker, cloner et écrire un premier script | 10 min | 2 |
-| **2** | Adresse d'un poste (paramètre, conditions) | 15 min | 4 |
-| **3** | Plan d'adressage (boucle `for`) | 15 min | 4 |
-| **4** | Connexion par mot de passe (`read`, boucle `while`) | 20 min | 5 |
-| **5** | Ranger les journaux (fichiers) | 25 min | 5 |
-| | **Total** | **1h25** | **/20** |
+| Mission | Objectif | Durée conseillée | Points | Observables |
+| :---: | --- | :---: | :---: | --- |
+| **1** | Forker, cloner et écrire un premier script | 10 min | 2 | C08.2.1 |
+| **2** | Adresse d'un poste (paramètre, conditions) | 15 min | 4 | — |
+| **3** | Plan d'adressage (boucle `for`) | 15 min | 4 | — |
+| **4** | Connexion par mot de passe (`read`, boucle `while`) | 20 min | 5 | — |
+| **5** | Ranger les journaux (fichiers) | 25 min | 5 | — |
+| | **Total** | **1h25** | **/20** |  |
+
+**Observables du référentiel** (suivi des compétences du BTS CIEL) travaillés dans cette évaluation :
+
+- `C08.2.1` — Un outil de versionnement est en place *(mission 1)*
+
+Missions sans observable : 2, 3, 4, 5 (notées sans rattachement au référentiel).
 
 Les missions se font **dans l'ordre**. Gardez 5 minutes de marge pour les validations.
 
